@@ -74,7 +74,7 @@ class LoginControllerImp extends LoginController {
     FirebaseMessaging.instance.getToken().then((value) {
       print("=============================");
       print("Firebase Token: $value");
-      String? token = value;
+      //String? token = value;
     });
     emailController = TextEditingController();
     passWordController = TextEditingController();
