@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/core/class/status_request.dart';
 import 'package:e_commerce_app/core/constant/routes_name.dart';
 import 'package:e_commerce_app/core/functions/handling_status_controller.dart';
+import 'package:e_commerce_app/core/services/services.dart';
 import 'package:e_commerce_app/data/datasource/remote/auth/login_remote.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class LoginControllerImp extends LoginController {
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
   late TextEditingController emailController;
   late TextEditingController passWordController;
+  MyServices myServices = Get.find();
   StatusRequest statusRequest = StatusRequest.none;
   LoginRemoteData loginRemoteData = LoginRemoteData(crud: Get.find());
   bool obscure = false;
@@ -30,6 +32,15 @@ class LoginControllerImp extends LoginController {
       statusRequest = handlingStatusRequest(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == 'success') {
+          myServices.sharedPreferences
+              .setString("id", response['data']['users_id']);
+          myServices.sharedPreferences
+              .setString("username", response['data']['users_name']);
+          myServices.sharedPreferences
+              .setString("email", response['data']['users_email']);
+          myServices.sharedPreferences
+              .setString("phone", response['data']['users_phone']);
+          myServices.sharedPreferences.setString("step", "2");
           Get.offNamed(AppRoute.homePage);
           update();
         } else {
@@ -61,7 +72,9 @@ class LoginControllerImp extends LoginController {
   @override
   void onInit() {
     FirebaseMessaging.instance.getToken().then((value) {
+      print("=============================");
       print("Firebase Token: $value");
+      String? token = value;
     });
     emailController = TextEditingController();
     passWordController = TextEditingController();
