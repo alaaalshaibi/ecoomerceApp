@@ -48,6 +48,7 @@ class VerifyCodeSignUp extends StatelessWidget {
                   height: 65,
                 ),
                 OtpTextField(
+                  autoFocus: true,
                   fieldWidth: 50,
                   borderRadius: BorderRadius.circular(20),
                   numberOfFields: 5,

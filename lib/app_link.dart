@@ -1,5 +1,5 @@
 class AppLink {
-  static const String serverLink = "https://3la2alshaibe.com/ecommerce";
+  static const String serverLink = "https://3la2alshaibe.com/3la2/ecommerce";
 
   static const String imageStatic = "$serverLink/upload";
   static const String imageCategories = "$imageStatic/categories";
@@ -21,4 +21,7 @@ class AppLink {
 
   //* ================= Home ===================
   static const String home = "$serverLink/home.php";
+  //* ================= items View ===================
+
+  static const String itemsView = "$serverLink/items/view.php";
 }

@@ -2,7 +2,7 @@ name: e_commerce_app
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=3.0.0 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -31,7 +31,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons:
@@ -41,7 +40,7 @@ dependencies:
   intl: ^0.18.1
   http:
   # Images
-  cached_network_image: ^3.2.0 
+  cached_network_image: ^3.2.3
   image_picker: ^1.0.0
   # Animate
   show_up_animation: ^2.0.0
@@ -51,7 +50,7 @@ dependencies:
   google_maps_flutter: ^2.1.5
   geolocator: ^9.0.2
   geocoding: ^2.0.4
-  # Firebase And Notification 
+  # Firebase And Notification
   firebase_messaging: ^14.6.4
   firebase_core: ^2.14.0
   flutter_local_notifications: ^15.1.0+1
@@ -60,20 +59,20 @@ dependencies:
   sqflite:
   shared_preferences: ^2.0.15
   path: ^1.8.0
-  # Qrcode 
+  # Qrcode
   qr_flutter: ^4.0.0
   scan: ^1.6.0
   grouped_list: ^5.1.2
   url_launcher: ^6.1.2
   dropdown_search: ^5.0.6
   badges: ^3.1.1
-  # Icon 
+  # Icon
   flutter_svg: ^2.0.5
   font_awesome_flutter: ^10.1.0
   fluttericon: ^2.0.0
   dartz: ^0.10.1
   # Google Auth
-  google_sign_in: ^6.1.4  
+  google_sign_in: ^6.1.4
   device_preview: ^1.1.0
   responsive_builder: ^0.7.0
   image_pickers: ^2.0.0+2
@@ -92,13 +91,12 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.1
 dependency_overrides:
-  test_api: 0.4.18
+  test_api:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -126,8 +124,8 @@ flutter:
         - asset: assets/font/Cairo/Cairo Regular 400.ttf
         - asset: assets/font/Cairo/Cairo Bold 700.ttf
           weight: 700
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+    #       - asset: fonts/Schyler-Italic.ttf
+    #         style: italic
     - family: Playfair_Display
       fonts:
         - asset: assets/font/Playfair_Display/PlayfairDisplay-Regular.ttf

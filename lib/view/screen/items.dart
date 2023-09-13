@@ -1,0 +1,48 @@
+import 'package:e_commerce_app/controller/items_controller.dart';
+import 'package:e_commerce_app/core/class/handling_data_view.dart';
+import 'package:e_commerce_app/data/model/items_model.dart';
+import 'package:e_commerce_app/view/widget/custom_app_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../widget/items/custom_list_items.dart';
+import '../widget/items/list_catagories_items.dart';
+
+class ItemsScreen extends StatelessWidget {
+  const ItemsScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    Get.put(ItemsControllerImp());
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(15),
+        child: ListView(
+          children: [
+            CustomAppBarHome(
+              hintText: 'Find Product',
+              onPressed: () {},
+              onPressedSearch: () {},
+            ),
+            const ListCatagoriesItems(),
+            GetBuilder<ItemsControllerImp>(builder: (controller) {
+              return HandlingDataView(
+                  statusRequest: controller.statusRequest,
+                  widget: GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: controller.itemsView.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              childAspectRatio: 0.7, crossAxisCount: 2),
+                      itemBuilder: (context, index) => CustomListItems(
+                            itemsModel: ItemsModel.fromJson(
+                                controller.itemsView[index]),
+                          )));
+            })
+          ],
+        ),
+      ),
+    );
+  }
+}

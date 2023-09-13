@@ -15,7 +15,6 @@ class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
   VerifyCodeSignUpRemote verifyCodeSignUpRemote =
       VerifyCodeSignUpRemote(crud: Get.find());
   StatusRequest statusRequest = StatusRequest.none;
-
   @override
   checkCode(verificationCode) async {
     statusRequest = StatusRequest.loading;

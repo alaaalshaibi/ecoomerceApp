@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/class/status_request.dart';
 import 'package:e_commerce_app/core/constant/routes_name.dart';
+import 'package:e_commerce_app/core/constant/user_key.dart';
 import 'package:e_commerce_app/core/functions/handling_status_controller.dart';
 import 'package:e_commerce_app/core/services/services.dart';
 import 'package:e_commerce_app/data/datasource/remote/auth/login_remote.dart';
@@ -33,13 +34,13 @@ class LoginControllerImp extends LoginController {
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == 'success') {
           myServices.sharedPreferences
-              .setString("id", response['data']['users_id']);
+              .setString(UserKey.idUser, response['data']['users_id']);
           myServices.sharedPreferences
-              .setString("username", response['data']['users_name']);
+              .setString(UserKey.userName, response['data']['users_name']);
           myServices.sharedPreferences
-              .setString("email", response['data']['users_email']);
+              .setString(UserKey.email, response['data']['users_email']);
           myServices.sharedPreferences
-              .setString("phone", response['data']['users_phone']);
+              .setString(UserKey.phone, response['data']['users_phone']);
           myServices.sharedPreferences.setString("step", "2");
           Get.offNamed(AppRoute.homePage);
           update();
