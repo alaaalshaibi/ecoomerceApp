@@ -5,6 +5,7 @@ import 'package:e_commerce_app/view/screen/auth/forget_password/success_reset_pa
 import 'package:e_commerce_app/view/screen/auth/language.dart';
 import 'package:e_commerce_app/view/screen/auth/login.dart';
 import 'package:e_commerce_app/view/screen/home_screen.dart';
+import 'package:e_commerce_app/view/screen/my_favorite.dart';
 import 'package:e_commerce_app/view/screen/onboarding.dart';
 import 'package:e_commerce_app/view/screen/auth/forget_password/reset_password.dart';
 import 'package:e_commerce_app/view/screen/auth/sign_up/verify_code_sign_up_email.dart';
@@ -45,4 +46,5 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: AppRoute.productDetailsScreen,
       page: () => const ProductDetailsScreen()),
+  GetPage(name: AppRoute.myFavorite, page: () => const MyFavorite()),
 ];

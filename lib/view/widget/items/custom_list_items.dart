@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/controller/favorite_controller.dart';
 import 'package:e_commerce_app/controller/items_controller.dart';
 import 'package:e_commerce_app/core/functions/translate_data_base.dart';
 import 'package:flutter/material.dart';
@@ -60,9 +61,10 @@ class CustomListItems extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text("Rating 3.5"),
+                    const Spacer(),
                     ...List.generate(
                         5,
                         (index) => const Icon(Icons.star_border,
@@ -79,19 +81,34 @@ class CustomListItems extends StatelessWidget {
                     SizedBox(
                       width: 20,
                       height: 20,
-                      child: MaterialButton(
-                        padding: EdgeInsets.zero,
-                        onPressed: () {},
-                        child: "${itemsModel.favorite}" == "1"
-                            ? const Icon(
-                                Icons.favorite,
-                                color: Colors.red,
-                              )
-                            : const Icon(
-                                Icons.favorite_border,
-                                color: Colors.red,
-                              ),
-                      ),
+                      child: GetBuilder<FavoriteController>(
+                          builder: (controllerFavorite) {
+                        return MaterialButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {
+                              if (controllerFavorite
+                                      .isFavorite[itemsModel.itemsId] ==
+                                  '1') {
+                                controllerFavorite.setFavorite(
+                                    itemsModel.itemsId, '0');
+                                controllerFavorite
+                                    .removeFavorite(itemsModel.itemsId!);
+                              } else {
+                                controllerFavorite.setFavorite(
+                                    itemsModel.itemsId, '1');
+                                controllerFavorite
+                                    .addFavorite(itemsModel.itemsId!);
+                              }
+                            },
+                            child: Icon(
+                              controllerFavorite
+                                          .isFavorite[itemsModel.itemsId] ==
+                                      '1'
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: Colors.red,
+                            ));
+                      }),
                     )
                   ],
                 )

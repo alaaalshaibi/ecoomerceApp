@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/class/handling_data_view.dart';
+import 'package:e_commerce_app/core/constant/routes_name.dart';
 import 'package:e_commerce_app/view/widget/home/list_items_home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,10 +24,12 @@ class HomePage extends StatelessWidget {
           children: [
             const SizedBox(height: 25),
             CustomAppBarHome(
-              hintText: 'Find Product',
-              onPressed: () {},
-              onPressedSearch: () {},
-            ),
+                hintText: 'Find Product',
+                onPressed: () {},
+                onPressedSearch: () {},
+                onPressedFavorite: () {
+                  Get.toNamed(AppRoute.myFavorite);
+                }),
             const CustomPromotionCard(
               titleText: 'add offers order',
               bodyText: 'you can order discount 10%',

@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/controller/favorite_controller.dart';
 import 'package:e_commerce_app/controller/items_controller.dart';
 import 'package:e_commerce_app/core/class/handling_data_view.dart';
 import 'package:e_commerce_app/data/model/items_model.dart';
@@ -14,6 +15,7 @@ class ItemsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(ItemsControllerImp());
+    FavoriteController controllerFavorite = Get.put(FavoriteController());
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(15),
@@ -23,6 +25,7 @@ class ItemsScreen extends StatelessWidget {
               hintText: 'Find Product',
               onPressed: () {},
               onPressedSearch: () {},
+              onPressedFavorite: () {},
             ),
             const ListCatagoriesItems(),
             GetBuilder<ItemsControllerImp>(builder: (controller) {
@@ -35,10 +38,15 @@ class ItemsScreen extends StatelessWidget {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               childAspectRatio: 0.7, crossAxisCount: 2),
-                      itemBuilder: (context, index) => CustomListItems(
-                            itemsModel: ItemsModel.fromJson(
-                                controller.itemsView[index]),
-                          )));
+                      itemBuilder: (context, index) {
+                        controllerFavorite.isFavorite[
+                                controller.itemsView[index]['items_id']] =
+                            controller.itemsView[index]['favorite'];
+                        return CustomListItems(
+                          itemsModel:
+                              ItemsModel.fromJson(controller.itemsView[index]),
+                        );
+                      }));
             })
           ],
         ),
