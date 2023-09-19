@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/view/screen/home.dart';
+import 'package:e_commerce_app/view/screen/setting/setting_home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,9 +11,7 @@ class HomeScreenControllerImp extends HomeScreenController {
   int currantPage = 0;
   List<Widget> listPage = [
     const HomePage(),
-    const Column(
-      children: [Center(child: Text('setting'))],
-    ),
+    const SettingScreen(),
     const Column(
       children: [Center(child: Text('Profile'))],
     ),

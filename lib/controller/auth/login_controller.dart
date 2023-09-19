@@ -4,6 +4,7 @@ import 'package:e_commerce_app/core/constant/user_key.dart';
 import 'package:e_commerce_app/core/functions/handling_status_controller.dart';
 import 'package:e_commerce_app/core/services/services.dart';
 import 'package:e_commerce_app/data/datasource/remote/auth/login_remote.dart';
+import 'package:e_commerce_app/data/model/auth_model.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,10 +14,12 @@ abstract class LoginController extends GetxController {
   goToSignUp();
   goToForgetPassword();
   showPassword();
+  goToVerifyCodeSignUp();
 }
 
 class LoginControllerImp extends LoginController {
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
+  List<AuthModel> auth = [];
   late TextEditingController emailController;
   late TextEditingController passWordController;
   MyServices myServices = Get.find();
@@ -33,17 +36,22 @@ class LoginControllerImp extends LoginController {
       statusRequest = handlingStatusRequest(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == 'success') {
-          myServices.sharedPreferences
-              .setString(UserKey.idUser, response['data']['users_id']);
-          myServices.sharedPreferences
-              .setString(UserKey.userName, response['data']['users_name']);
-          myServices.sharedPreferences
-              .setString(UserKey.email, response['data']['users_email']);
-          myServices.sharedPreferences
-              .setString(UserKey.phone, response['data']['users_phone']);
-          myServices.sharedPreferences.setString("step", "2");
-          Get.offNamed(AppRoute.homePage);
-          update();
+          if (response['message'] == 'please verify code') {
+            goToVerifyCodeSignUp();
+          } else {
+            auth.add(AuthModel.fromJson(response['data']));
+            myServices.sharedPreferences
+                .setString(UserKey.idUser, response['data']['users_id']);
+            myServices.sharedPreferences
+                .setString(UserKey.userName, response['data']['users_name']);
+            myServices.sharedPreferences
+                .setString(UserKey.email, response['data']['users_email']);
+            myServices.sharedPreferences
+                .setString(UserKey.phone, response['data']['users_phone']);
+            myServices.sharedPreferences.setString("Login", "2");
+            Get.offNamed(AppRoute.homePage);
+            update();
+          }
         } else {
           Get.defaultDialog(
             middleText: 'Email or Phone Note correct',
@@ -98,5 +106,12 @@ class LoginControllerImp extends LoginController {
   showPassword() {
     obscure = obscure == false ? true : false;
     update();
+  }
+
+  @override
+  goToVerifyCodeSignUp() {
+    Get.offNamed(AppRoute.verifyCodeSignUp, arguments: {
+      "userEmail": emailController.text,
+    });
   }
 }

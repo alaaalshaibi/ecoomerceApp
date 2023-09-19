@@ -7,11 +7,14 @@ import 'package:get/get.dart';
 abstract class VerifyCodeSignUpController extends GetxController {
   checkCode(String verificationCode);
   goToSuccessCheckEmailSignUp();
+  resendVerifyCode();
+  inVisibleResendCode();
 }
 
 class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
   //late String verifyCode;
   late String userEmail;
+  bool isVisible = true;
   VerifyCodeSignUpRemote verifyCodeSignUpRemote =
       VerifyCodeSignUpRemote(crud: Get.find());
   StatusRequest statusRequest = StatusRequest.none;
@@ -38,6 +41,11 @@ class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
   }
 
   @override
+  resendVerifyCode() {
+    verifyCodeSignUpRemote.resendVerifyCodeData(userEmail);
+  }
+
+  @override
   goToSuccessCheckEmailSignUp() {
     Get.offNamed(AppRoute.successCheckEmailSignUp);
   }
@@ -46,5 +54,15 @@ class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
   void onInit() {
     userEmail = Get.arguments['userEmail'];
     super.onInit();
+  }
+
+  @override
+  inVisibleResendCode() {
+    isVisible = false;
+    update();
+    Future.delayed(const Duration(seconds: 5), () {
+      isVisible = true;
+      update();
+    });
   }
 }

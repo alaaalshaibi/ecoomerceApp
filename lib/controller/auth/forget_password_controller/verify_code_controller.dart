@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 abstract class VerifyCodeController extends GetxController {
   checkCode(String verifyCodeTyping);
   goToResetPassword();
+  resendVerifyCode();
+  inVisibleResendCode();
 }
 
 class VerifyCodeControllerImp extends VerifyCodeController {
@@ -14,6 +16,7 @@ class VerifyCodeControllerImp extends VerifyCodeController {
       VerifyCodeForGetRemoteData(crud: Get.find());
   StatusRequest statusRequest = StatusRequest.none;
   late String email;
+  bool isVisible = true;
 
   @override
   checkCode(verifyCodeTyping) async {
@@ -47,6 +50,21 @@ class VerifyCodeControllerImp extends VerifyCodeController {
   void onInit() {
     email = Get.arguments['users_email'];
     super.onInit();
+  }
+
+  @override
+  inVisibleResendCode() {
+    isVisible = false;
+    update();
+    Future.delayed(const Duration(seconds: 5), () {
+      isVisible = true;
+      update();
+    });
+  }
+
+  @override
+  resendVerifyCode() {
+    verifyCodeForGetRemoteData.resendVerifyCodeData(email);
   }
   // @override
   // void dispose() {

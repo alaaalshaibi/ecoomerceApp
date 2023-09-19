@@ -12,7 +12,7 @@ class SignUpRemote {
       String? phone,
       String? password}) async {
     var response = await crud.postData(AppLink.signUp, {
-      "user_name": userName,
+      "users_name": userName,
       "users_email": email,
       "users_phone": phone,
       "users_password": password,

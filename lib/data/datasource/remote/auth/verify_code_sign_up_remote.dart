@@ -14,4 +14,11 @@ class VerifyCodeSignUpRemote {
     });
     return response.fold((l) => l, (r) => r);
   }
+
+  resendVerifyCodeData(String userEmail) async {
+    var response = await crud.postData(AppLink.resendVerifyCode, {
+      "users_email": userEmail,
+    });
+    return response.fold((l) => l, (r) => r);
+  }
 }

@@ -10,6 +10,7 @@ class AppLink {
   static const String signUp = "$serverLink/auth/sign_up.php";
   static const String verifyCode = "$serverLink/auth/verify_code.php";
   static const String login = "$serverLink/auth/login.php";
+  static const String resendVerifyCode = "$serverLink/auth/reset_code.php";
   //* ================== ForGet Password ===========
 
   static const String checkEmail =

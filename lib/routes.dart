@@ -17,6 +17,7 @@ import 'package:get/get.dart';
 
 import 'view/screen/items.dart';
 import 'view/screen/product_details.dart';
+import 'view/screen/setting/setting_home.dart';
 
 List<GetPage<dynamic>>? routes = [
   GetPage(
@@ -47,4 +48,5 @@ List<GetPage<dynamic>>? routes = [
       name: AppRoute.productDetailsScreen,
       page: () => const ProductDetailsScreen()),
   GetPage(name: AppRoute.myFavorite, page: () => const MyFavorite()),
+  GetPage(name: AppRoute.settingScreen, page: () => const SettingScreen()),
 ];

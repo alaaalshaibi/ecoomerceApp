@@ -12,4 +12,11 @@ class VerifyCodeForGetRemoteData {
         {"users_email": email, "verify_typing": verifyCodeTyping});
     return response.fold((l) => l, (r) => r);
   }
+
+  resendVerifyCodeData(String userEmail) async {
+    var response = await crud.postData(AppLink.resendVerifyCode, {
+      "users_email": userEmail,
+    });
+    return response.fold((l) => l, (r) => r);
+  }
 }

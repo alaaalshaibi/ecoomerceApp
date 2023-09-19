@@ -64,6 +64,24 @@ class VerifyCodeSignUp extends StatelessWidget {
                     controller.checkCode(verificationCode);
                   }, // end onSubmit
                 ),
+                const SizedBox(height: 20),
+                GetBuilder<VerifyCodeSignUpControllerImp>(
+                    builder: (controller) {
+                  return controller.isVisible
+                      ? TextButton(
+                          onPressed: () {
+                            controller.resendVerifyCode();
+                            controller.inVisibleResendCode();
+                          },
+                          child: const Text(
+                            "Resend VerificationCode",
+                            style: TextStyle(color: AppColor.primaryColor),
+                          ))
+                      : Text(
+                          "Resend VerificationCode",
+                          style: TextStyle(color: Colors.grey.shade400),
+                        );
+                })
               ]),
             ));
       }),

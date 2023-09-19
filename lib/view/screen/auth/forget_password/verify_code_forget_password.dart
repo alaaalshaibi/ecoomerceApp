@@ -70,6 +70,22 @@ class VerifyCodeForgetPassword extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
+                  GetBuilder<VerifyCodeControllerImp>(builder: (controller) {
+                    return controller.isVisible
+                        ? TextButton(
+                            onPressed: () {
+                              controller.resendVerifyCode();
+                              controller.inVisibleResendCode();
+                            },
+                            child: const Text(
+                              "Resend VerificationCode",
+                              style: TextStyle(color: AppColor.primaryColor),
+                            ))
+                        : Text(
+                            "Resend VerificationCode",
+                            style: TextStyle(color: Colors.grey.shade400),
+                          );
+                  })
                 ]),
               ));
         }),
