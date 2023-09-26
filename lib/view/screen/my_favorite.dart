@@ -18,7 +18,6 @@ class MyFavorite extends GetView<FavoriteController> {
           children: [
             CustomAppBarHome(
               hintText: "Find Product",
-              onPressed: () {},
               onPressedSearch: () {},
               onPressedFavorite: () {},
             ),

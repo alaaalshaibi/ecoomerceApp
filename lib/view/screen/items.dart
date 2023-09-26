@@ -23,7 +23,6 @@ class ItemsScreen extends StatelessWidget {
           children: [
             CustomAppBarHome(
               hintText: 'Find Product',
-              onPressed: () {},
               onPressedSearch: () {},
               onPressedFavorite: () {},
             ),

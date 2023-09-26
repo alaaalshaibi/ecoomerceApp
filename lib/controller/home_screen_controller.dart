@@ -11,16 +11,21 @@ class HomeScreenControllerImp extends HomeScreenController {
   int currantPage = 0;
   List<Widget> listPage = [
     const HomePage(),
-    const SettingScreen(),
     const Column(
       children: [Center(child: Text('Profile'))],
     ),
     const Column(
       children: [Center(child: Text('favorite'))],
     ),
+    const SettingScreen(),
   ];
-  List<String> namePage = ["Home", "Setting", "Profile", "Favorite"];
-
+  List bottomAppBar = [
+    {'title': 'Home', 'icon': Icons.home},
+    {'title': 'Favorite', 'icon': Icons.notifications_none},
+    {'title': 'Profile', 'icon': Icons.person_2_outlined},
+    {'title': 'Setting', 'icon': Icons.settings_outlined},
+  ];
+// "Home", "Setting", "Profile", "Favorite"
   @override
   changePage(indexPage) {
     currantPage = indexPage;

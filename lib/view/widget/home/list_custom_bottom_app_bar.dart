@@ -14,8 +14,9 @@ class ListCustomBottomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeScreenControllerImp>(builder: (controller) {
       return BottomAppBar(
+        height: 55,
         color: AppColor.bottomAppBar,
-        notchMargin: 7,
+        notchMargin: 3,
         shape: const AutomaticNotchedShape(
             RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
@@ -30,8 +31,7 @@ class ListCustomBottomAppBar extends StatelessWidget {
               return index == 2
                   ? const Spacer()
                   : CustomBottomAppBarHome(
-                      titleBtn: controller.namePage[i],
-                      iconBtn: Icons.home,
+                      iconBtn: controller.bottomAppBar[i]['icon'],
                       onPressedBtn: () => controller.changePage(i),
                       isActive: controller.currantPage == i ? true : false,
                     );

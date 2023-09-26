@@ -11,4 +11,5 @@ class AppImageAssets {
   static const String noData = 'assets/lottie/no_data.json';
   static const String offline = 'assets/lottie/offline.json';
   static const String serverError = 'assets/lottie/server_error.json';
+  static const String avatar = 'assets/images/avatar.png';
 }

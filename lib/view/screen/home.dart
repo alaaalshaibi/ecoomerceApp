@@ -25,7 +25,6 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 25),
             CustomAppBarHome(
                 hintText: 'Find Product',
-                onPressed: () {},
                 onPressedSearch: () {},
                 onPressedFavorite: () {
                   Get.toNamed(AppRoute.myFavorite);

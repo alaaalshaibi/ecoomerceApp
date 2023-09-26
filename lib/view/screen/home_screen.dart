@@ -18,6 +18,8 @@ class HomeScreen extends GetView<HomeScreenControllerImp> {
             foregroundColor: AppColor.backgroundcolor,
             backgroundColor: AppColor.primaryColor,
             onPressed: () {},
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
             child: const Icon(Icons.shopping_cart)),
         bottomNavigationBar: const ListCustomBottomAppBar(),
         body: controller.listPage.elementAt(controller.currantPage),
