@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/controller/favorite_controller.dart';
+import 'package:e_commerce_app/controller/favorite/favorite_controller.dart';
 import 'package:e_commerce_app/core/functions/translate_data_base.dart';
 import 'package:e_commerce_app/data/model/my_favorite_model.dart';
 import 'package:flutter/material.dart';

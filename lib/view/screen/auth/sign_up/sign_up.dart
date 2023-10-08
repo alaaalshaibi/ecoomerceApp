@@ -20,6 +20,11 @@ class SignUp extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColor.backgroundcolor,
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Icons.arrow_back_ios_new)),
         title: Text(
           AppLang.signUp.tr,
           style: Theme.of(context)

@@ -4,8 +4,8 @@ import 'package:e_commerce_app/core/services/services.dart';
 import 'package:e_commerce_app/data/datasource/remote/home_data.dart';
 import 'package:get/get.dart';
 
-import '../core/class/status_request.dart';
-import '../core/functions/handling_status_controller.dart';
+import '../../core/class/status_request.dart';
+import '../../core/functions/handling_status_controller.dart';
 
 abstract class HomeController extends GetxController {
   initialData();

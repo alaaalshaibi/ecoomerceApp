@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../../app_link.dart';
-import '../../../controller/home_controller.dart';
+import '../../../controller/home/home_controller.dart';
 import '../../../core/constant/color.dart';
 import '../../../data/model/categories_model.dart';
 

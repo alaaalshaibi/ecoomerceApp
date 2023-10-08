@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/controller/onboarding_controller.dart';
+import 'package:e_commerce_app/controller/auth/onboarding/onboarding_controller.dart';
 import 'package:e_commerce_app/view/widget/onboarding/custom_button.dart';
 import 'package:e_commerce_app/view/widget/onboarding/custom_slider.dart';
 import 'package:e_commerce_app/view/widget/onboarding/dot_controller.dart';

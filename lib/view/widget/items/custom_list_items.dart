@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/controller/favorite_controller.dart';
-import 'package:e_commerce_app/controller/items_controller.dart';
+import 'package:e_commerce_app/controller/favorite/favorite_controller.dart';
+import 'package:e_commerce_app/controller/items/items_controller.dart';
 import 'package:e_commerce_app/core/functions/translate_data_base.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

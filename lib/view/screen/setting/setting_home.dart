@@ -19,7 +19,7 @@ class SettingScreen extends StatelessWidget {
           children: [
             Container(
               height: Get.height / 4,
-              decoration: BoxDecoration(color: AppColor.primaryColor),
+              decoration: const BoxDecoration(color: AppColor.primaryColor),
             ),
             Positioned(
                 top: Get.height / 6,
@@ -28,7 +28,7 @@ class SettingScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(100)),
-                  child: CircleAvatar(
+                  child: const CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 50,
                     backgroundImage: AssetImage(AppImageAssets.avatar),
@@ -86,7 +86,7 @@ class SettingScreen extends StatelessWidget {
           onTap: () {
             controller.logout();
           },
-          title: Text('Logout'),
+          title: const Text('Logout'),
           trailing: const Icon(Icons.logout),
         )),
       ],

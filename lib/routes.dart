@@ -1,12 +1,10 @@
 import 'package:e_commerce_app/core/constant/routes_name.dart';
-import 'package:e_commerce_app/core/middleware/my_middleware.dart';
 import 'package:e_commerce_app/view/screen/auth/forget_password/check_email_forget_password.dart';
 import 'package:e_commerce_app/view/screen/auth/forget_password/success_reset_password.dart';
-import 'package:e_commerce_app/view/screen/auth/language.dart';
 import 'package:e_commerce_app/view/screen/auth/login.dart';
-import 'package:e_commerce_app/view/screen/home_screen.dart';
-import 'package:e_commerce_app/view/screen/my_favorite.dart';
-import 'package:e_commerce_app/view/screen/onboarding.dart';
+import 'package:e_commerce_app/view/screen/home/home_screen.dart';
+import 'package:e_commerce_app/view/screen/favorite/my_favorite.dart';
+import 'package:e_commerce_app/view/screen/auth/onboarding/onboarding.dart';
 import 'package:e_commerce_app/view/screen/auth/forget_password/reset_password.dart';
 import 'package:e_commerce_app/view/screen/auth/sign_up/verify_code_sign_up_email.dart';
 import 'package:e_commerce_app/view/screen/auth/sign_up/sign_up.dart';
@@ -15,8 +13,11 @@ import 'package:e_commerce_app/view/screen/auth/forget_password/verify_code_forg
 
 import 'package:get/get.dart';
 
-import 'view/screen/items.dart';
-import 'view/screen/product_details.dart';
+import 'core/middleware/my_middleware.dart';
+import 'view/screen/auth/language.dart';
+import 'view/screen/cart/cart.dart';
+import 'view/screen/items/items.dart';
+import 'view/screen/items/product_details.dart';
 import 'view/screen/setting/setting_home.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -25,6 +26,7 @@ List<GetPage<dynamic>>? routes = [
     page: () => const AppLanguage(),
     middlewares: [MyMiddleWare()],
   ),
+  // GetPage(name: '/', page: () => const CartScreen()),
   // GetPage(name: '/', page: () => const TestView()),
   GetPage(name: AppRoute.login, page: () => const Login()),
   GetPage(name: AppRoute.signUp, page: () => const SignUp()),
@@ -49,4 +51,5 @@ List<GetPage<dynamic>>? routes = [
       page: () => const ProductDetailsScreen()),
   GetPage(name: AppRoute.myFavorite, page: () => const MyFavorite()),
   GetPage(name: AppRoute.settingScreen, page: () => const SettingScreen()),
+  GetPage(name: AppRoute.cartScreen, page: () => const CartScreen()),
 ];

@@ -4,15 +4,16 @@ import 'package:e_commerce_app/core/services/services.dart';
 import 'package:e_commerce_app/data/model/items_model.dart';
 import 'package:get/get.dart';
 
-import '../core/constant/user_key.dart';
-import '../core/functions/handling_status_controller.dart';
-import '../data/datasource/remote/items_view.dart';
+import '../../core/constant/user_key.dart';
+import '../../core/functions/handling_status_controller.dart';
+import '../../data/datasource/remote/items_view.dart';
 
 abstract class ItemsController extends GetxController {
   initData();
   changeTabCat(int indexTab, String idCatagories);
   getItemsView(String idCategories);
   goToProductDetails(ItemsModel itemsModel);
+  goToFavoriteScreen();
 }
 
 class ItemsControllerImp extends ItemsController {
@@ -56,6 +57,7 @@ class ItemsControllerImp extends ItemsController {
   getItemsView(String idCategories) async {
     itemsView.clear();
     statusRequest = StatusRequest.loading;
+    update();
     var response = await itemsViewData.getDataItemsView(
       usersId: myServices.sharedPreferences.getString(UserKey.idUser)!,
       idCatagories: idCategories,
@@ -75,5 +77,10 @@ class ItemsControllerImp extends ItemsController {
   goToProductDetails(ItemsModel itemsModel) {
     Get.toNamed(AppRoute.productDetailsScreen,
         arguments: {"itemsModel": itemsModel});
+  }
+
+  @override
+  goToFavoriteScreen() {
+    Get.toNamed(AppRoute.myFavorite);
   }
 }

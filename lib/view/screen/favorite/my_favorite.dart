@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/controller/favorite_controller.dart';
+import 'package:e_commerce_app/controller/favorite/favorite_controller.dart';
 import 'package:e_commerce_app/core/class/handling_data_view.dart';
 import 'package:e_commerce_app/view/widget/custom_app_bar.dart';
 import 'package:e_commerce_app/view/widget/favorite/custom_list_favorite_item.dart';

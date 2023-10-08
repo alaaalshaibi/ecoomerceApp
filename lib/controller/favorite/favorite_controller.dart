@@ -4,8 +4,8 @@ import 'package:e_commerce_app/core/services/services.dart';
 import 'package:e_commerce_app/data/datasource/remote/favorite_data.dart';
 import 'package:get/get.dart';
 
-import '../core/constant/user_key.dart';
-import '../data/model/my_favorite_model.dart';
+import '../../core/constant/user_key.dart';
+import '../../data/model/my_favorite_model.dart';
 
 class FavoriteController extends GetxController {
   FavoriteData favoriteData = FavoriteData(crud: Get.find());

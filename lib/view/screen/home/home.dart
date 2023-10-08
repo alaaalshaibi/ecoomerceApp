@@ -4,11 +4,11 @@ import 'package:e_commerce_app/view/widget/home/list_items_home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controller/home_controller.dart';
-import '../widget/home/custom_promotion_card.dart';
-import '../widget/custom_app_bar.dart';
-import '../widget/home/custom_title.dart';
-import '../widget/home/list_catagories_home.dart';
+import '../../../controller/home/home_controller.dart';
+import '../../widget/home/custom_promotion_card.dart';
+import '../../widget/custom_app_bar.dart';
+import '../../widget/home/custom_title.dart';
+import '../../widget/home/list_catagories_home.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
