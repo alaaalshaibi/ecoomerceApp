@@ -20,6 +20,7 @@ class SearchControllerImp extends GetxController {
     if (value.isNotEmpty) {
       isSearch = true;
     } else {
+      statusRequest = StatusRequest.none;
       isSearch = false;
     }
     update();

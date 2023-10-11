@@ -52,6 +52,8 @@ class ProductDetailsScreen extends GetView<ProductDetailsControllerImp> {
                   const SizedBox(height: 10),
                   PriceAndQuantity(
                     price: "${controller.itemsModel.itemsPrice}",
+                    priceDiscount:
+                        "${controller.itemsModel.itemsPriceDiscount}",
                     quantity: "${controller.itemCountCart}",
                     onPressedAdd: () {
                       controller.itemsAdd(controller.itemsModel.itemsId!);

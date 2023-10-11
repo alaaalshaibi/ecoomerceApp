@@ -18,49 +18,48 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(HomeControllerImp());
     return GetBuilder<HomeControllerImp>(builder: (controller) {
-      return HandlingDataView(
-        statusRequest: controller.statusRequest,
-        widget: ListView(
-          padding: const EdgeInsets.all(10),
-          children: [
-            const SizedBox(height: 25),
-            CustomAppBarHome(
-                onChanged: (value) {
-                  controller.onChangeValue(value);
-                },
-                controllerText: controller.searchText,
-                hintText: 'Find Product',
-                onPressedSearch: () {
-                  controller.getSearchData();
-                },
-                onPressedFavorite: () {
-                  Get.toNamed(AppRoute.myFavorite);
-                }),
-            controller.isSearch
-                ? SearchView(
-                    dataSearchModel: controller.listSearch,
-                  )
-                : const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomPromotionCard(
-                        titleText: 'add offers order',
-                        bodyText: 'you can order discount 10%',
-                      ),
-                      ListCatagoriesHome(),
-                      SizedBox(height: 10),
-                      CustomTitleHome(
-                        titleHome: "Product For You",
-                      ),
-                      ListItemsHome(),
-                      CustomTitleHome(
-                        titleHome: "Offers",
-                      ),
-                      ListItemsHome(),
-                    ],
-                  )
-          ],
-        ),
+      return ListView(
+        padding: const EdgeInsets.all(10),
+        children: [
+          const SizedBox(height: 25),
+          CustomAppBarHome(
+              onChanged: (value) {
+                controller.onChangeValue(value);
+              },
+              controllerText: controller.searchText,
+              hintText: 'Find Product',
+              onPressedSearch: () {
+                controller.getSearchData();
+              },
+              onPressedFavorite: () {
+                Get.toNamed(AppRoute.myFavorite);
+              }),
+          HandlingDataView(
+              statusRequest: controller.statusRequest,
+              widget: controller.isSearch
+                  ? SearchView(
+                      dataSearchModel: controller.listSearch,
+                    )
+                  : const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomPromotionCard(
+                          titleText: 'add offers order',
+                          bodyText: 'you can order discount 10%',
+                        ),
+                        ListCatagoriesHome(),
+                        SizedBox(height: 10),
+                        CustomTitleHome(
+                          titleHome: "Product For You",
+                        ),
+                        ListItemsHome(),
+                        CustomTitleHome(
+                          titleHome: "Offers",
+                        ),
+                        ListItemsHome(),
+                      ],
+                    )),
+        ],
       );
     });
   }

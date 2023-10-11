@@ -6,12 +6,14 @@ class PriceAndQuantity extends StatelessWidget {
   final void Function()? onPressedRemove;
   final void Function()? onPressedAdd;
   final String price;
+  final String priceDiscount;
   final String quantity;
   const PriceAndQuantity({
     Key? key,
     required this.onPressedRemove,
     required this.onPressedAdd,
     required this.price,
+    required this.priceDiscount,
     required this.quantity,
   }) : super(key: key);
 
@@ -47,6 +49,14 @@ class PriceAndQuantity extends StatelessWidget {
       const Spacer(),
       Text(
         "$price \$",
+        style: const TextStyle(
+            decoration: TextDecoration.lineThrough,
+            fontSize: 25,
+            color: AppColor.black),
+      ),
+      const SizedBox(width: 10),
+      Text(
+        "$priceDiscount \$",
         style: const TextStyle(fontSize: 25, color: AppColor.primaryColor),
       )
     ]);
