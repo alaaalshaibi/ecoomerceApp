@@ -1,29 +1,27 @@
 import 'package:e_commerce_app/core/class/status_request.dart';
 import 'package:e_commerce_app/core/constant/routes_name.dart';
-import 'package:e_commerce_app/core/services/services.dart';
 import 'package:e_commerce_app/data/model/items_model.dart';
 import 'package:get/get.dart';
 
 import '../../core/constant/user_key.dart';
 import '../../core/functions/handling_status_controller.dart';
 import '../../data/datasource/remote/items_view.dart';
+import 'search.dart';
 
-abstract class ItemsController extends GetxController {
+abstract class ItemsController extends SearchControllerImp {
   initData();
   changeTabCat(int indexTab, String idCatagories);
   getItemsView(String idCategories);
-  goToProductDetails(ItemsModel itemsModel);
   goToFavoriteScreen();
 }
 
 class ItemsControllerImp extends ItemsController {
   ItemsViewData itemsViewData = ItemsViewData(crud: Get.find());
-  MyServices myServices = Get.find();
   List catagoriesItems = [];
   int? isSelected;
   String? idCat;
   List itemsView = [];
-  StatusRequest statusRequest = StatusRequest.none;
+
   late String idCategories;
   @override
   initData() {

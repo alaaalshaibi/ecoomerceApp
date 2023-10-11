@@ -25,6 +25,7 @@ class AppLink {
   //* ================= items View ===================
 
   static const String itemsView = "$serverLink/items/view.php";
+  static const String searchItems = "$serverLink/items/search.php";
 
   //* ================= favorite ===================
   static const String addFavorite = "$serverLink/favorite/add.php";

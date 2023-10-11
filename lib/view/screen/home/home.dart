@@ -9,6 +9,7 @@ import '../../widget/home/custom_promotion_card.dart';
 import '../../widget/custom_app_bar.dart';
 import '../../widget/home/custom_title.dart';
 import '../../widget/home/list_catagories_home.dart';
+import '../items/search.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -24,25 +25,40 @@ class HomePage extends StatelessWidget {
           children: [
             const SizedBox(height: 25),
             CustomAppBarHome(
+                onChanged: (value) {
+                  controller.onChangeValue(value);
+                },
+                controllerText: controller.searchText,
                 hintText: 'Find Product',
-                onPressedSearch: () {},
+                onPressedSearch: () {
+                  controller.getSearchData();
+                },
                 onPressedFavorite: () {
                   Get.toNamed(AppRoute.myFavorite);
                 }),
-            const CustomPromotionCard(
-              titleText: 'add offers order',
-              bodyText: 'you can order discount 10%',
-            ),
-            const ListCatagoriesHome(),
-            const SizedBox(height: 10),
-            const CustomTitleHome(
-              titleHome: "Product For You",
-            ),
-            const ListItemsHome(),
-            const CustomTitleHome(
-              titleHome: "Offers",
-            ),
-            const ListItemsHome(),
+            controller.isSearch
+                ? SearchView(
+                    dataSearchModel: controller.listSearch,
+                  )
+                : const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomPromotionCard(
+                        titleText: 'add offers order',
+                        bodyText: 'you can order discount 10%',
+                      ),
+                      ListCatagoriesHome(),
+                      SizedBox(height: 10),
+                      CustomTitleHome(
+                        titleHome: "Product For You",
+                      ),
+                      ListItemsHome(),
+                      CustomTitleHome(
+                        titleHome: "Offers",
+                      ),
+                      ListItemsHome(),
+                    ],
+                  )
           ],
         ),
       );

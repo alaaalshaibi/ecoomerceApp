@@ -1,18 +1,18 @@
+import 'package:e_commerce_app/controller/items/search.dart';
 import 'package:e_commerce_app/core/class/status_request.dart';
 import 'package:e_commerce_app/core/functions/handling_status_controller.dart';
-import 'package:e_commerce_app/core/services/services.dart';
 import 'package:e_commerce_app/data/datasource/remote/favorite_data.dart';
 import 'package:get/get.dart';
 
 import '../../core/constant/user_key.dart';
 import '../../data/model/my_favorite_model.dart';
 
-class FavoriteController extends GetxController {
+class FavoriteController extends SearchControllerImp {
   FavoriteData favoriteData = FavoriteData(crud: Get.find());
-  MyServices myServices = Get.find();
+  // MyServices myServices = Get.find();
   Map isFavorite = {};
   List<MyFavoriteModel> dataViewFavorite = [];
-  StatusRequest statusRequest = StatusRequest.none;
+  // StatusRequest statusRequest = StatusRequest.none;
 
   setFavorite(idProduct, valueFavorite) {
     isFavorite[idProduct] = valueFavorite;

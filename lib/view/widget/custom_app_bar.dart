@@ -1,15 +1,24 @@
 import 'package:e_commerce_app/core/constant/color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomAppBarHome extends StatelessWidget {
+  final bool isFavorite;
+  final bool isBack;
   final String hintText;
-  final void Function() onPressedFavorite;
+  final void Function(String)? onChanged;
+  final TextEditingController? controllerText;
+  final void Function()? onPressedFavorite;
   final void Function() onPressedSearch;
   const CustomAppBarHome({
     Key? key,
     required this.hintText,
     required this.onPressedSearch,
-    required this.onPressedFavorite,
+    this.onPressedFavorite,
+    this.controllerText,
+    this.onChanged,
+    this.isFavorite = true,
+    this.isBack = false,
   }) : super(key: key);
 
   @override
@@ -18,8 +27,18 @@ class CustomAppBarHome extends StatelessWidget {
       height: 45,
       child: Row(
         children: [
+          if (isBack)
+            IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: const Icon(Icons.arrow_back_ios_new),
+            ),
+          if (isBack) const SizedBox(width: 7),
           Expanded(
             child: TextFormField(
+              onChanged: onChanged,
+              controller: controllerText,
               cursorColor: AppColor.black,
               cursorHeight: 30,
               decoration: InputDecoration(
@@ -38,19 +57,20 @@ class CustomAppBarHome extends StatelessWidget {
                   fillColor: Colors.grey[200]),
             ),
           ),
-          const SizedBox(width: 7),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.grey[200],
-            ),
-            child: IconButton(
-                onPressed: onPressedFavorite,
-                icon: const Icon(
-                  Icons.favorite_border_outlined,
-                  // size: 25,
-                )),
-          )
+          if (isFavorite) const SizedBox(width: 7),
+          if (isFavorite)
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.grey[200],
+              ),
+              child: IconButton(
+                  onPressed: onPressedFavorite,
+                  icon: const Icon(
+                    Icons.favorite_border_outlined,
+                    // size: 25,
+                  )),
+            )
         ],
       ),
     );

@@ -1,26 +1,25 @@
 import 'package:e_commerce_app/core/constant/routes_name.dart';
 import 'package:e_commerce_app/core/constant/user_key.dart';
-import 'package:e_commerce_app/core/services/services.dart';
 import 'package:e_commerce_app/data/datasource/remote/home_data.dart';
 import 'package:get/get.dart';
 
 import '../../core/class/status_request.dart';
 import '../../core/functions/handling_status_controller.dart';
+import '../items/search.dart';
 
-abstract class HomeController extends GetxController {
+abstract class HomeController extends SearchControllerImp {
   initialData();
   getDataHome();
   goToItemsPage(List categories, int isSelectedCat, String idCategories);
 }
 
 class HomeControllerImp extends HomeController {
-  MyServices myServices = Get.find();
   HomeData homeData = HomeData(crud: Get.find());
-  late StatusRequest statusRequest;
   late String idUser;
   late String userName;
   List items = [];
   List categories = [];
+
   @override
   initialData() {
     idUser = myServices.sharedPreferences.getString(UserKey.idUser)!;
