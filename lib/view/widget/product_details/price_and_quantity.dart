@@ -8,6 +8,7 @@ class PriceAndQuantity extends StatelessWidget {
   final String price;
   final String priceDiscount;
   final String quantity;
+  final bool isDis;
   const PriceAndQuantity({
     Key? key,
     required this.onPressedRemove,
@@ -15,6 +16,7 @@ class PriceAndQuantity extends StatelessWidget {
     required this.price,
     required this.priceDiscount,
     required this.quantity,
+    required this.isDis,
   }) : super(key: key);
 
   @override
@@ -47,13 +49,14 @@ class PriceAndQuantity extends StatelessWidget {
             )),
       ]),
       const Spacer(),
-      Text(
-        "$price \$",
-        style: const TextStyle(
-            decoration: TextDecoration.lineThrough,
-            fontSize: 25,
-            color: AppColor.black),
-      ),
+      if (isDis)
+        Text(
+          "$price \$",
+          style: const TextStyle(
+              decoration: TextDecoration.lineThrough,
+              fontSize: 25,
+              color: AppColor.black),
+        ),
       const SizedBox(width: 10),
       Text(
         "$priceDiscount \$",

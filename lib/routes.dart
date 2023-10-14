@@ -1,4 +1,6 @@
 import 'package:e_commerce_app/core/constant/routes_name.dart';
+import 'package:e_commerce_app/view/screen/address/add_map_address.dart';
+import 'package:e_commerce_app/view/screen/address/view_address.dart';
 import 'package:e_commerce_app/view/screen/auth/forget_password/check_email_forget_password.dart';
 import 'package:e_commerce_app/view/screen/auth/forget_password/success_reset_password.dart';
 import 'package:e_commerce_app/view/screen/auth/login.dart';
@@ -14,6 +16,8 @@ import 'package:e_commerce_app/view/screen/auth/forget_password/verify_code_forg
 import 'package:get/get.dart';
 
 import 'core/middleware/my_middleware.dart';
+import 'view/screen/address/add_details_address.dart';
+import 'view/screen/address/edit_address.dart';
 import 'view/screen/auth/language.dart';
 import 'view/screen/cart/cart.dart';
 import 'view/screen/items/items.dart';
@@ -52,4 +56,10 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.myFavorite, page: () => const MyFavorite()),
   GetPage(name: AppRoute.settingScreen, page: () => const SettingScreen()),
   GetPage(name: AppRoute.cartScreen, page: () => const CartScreen()),
+  //*================ address ======================
+  GetPage(name: AppRoute.addMapAddress, page: () => const AddMapAddress()),
+  GetPage(
+      name: AppRoute.addDetailsAddress, page: () => const AddDetailsAddress()),
+  GetPage(name: AppRoute.viewAddress, page: () => const ViewAddress()),
+  GetPage(name: AppRoute.editAddress, page: () => const EditAddress()),
 ];

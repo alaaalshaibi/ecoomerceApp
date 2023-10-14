@@ -441,10 +441,10 @@ packages:
     dependency: "direct main"
     description:
       name: geocoding
-      sha256: b34c0501bbbaf3190b85bef3078b27cf66c28a8915c6d3af50d67f356aa7da31
+      sha256: e1dc0ac56666d9ed1d5a9ae5543ce9eb5986db6209cc7600103487d09192059c
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.0"
+    version: "2.1.1"
   geocoding_android:
     dependency: transitive
     description:
@@ -473,50 +473,50 @@ packages:
     dependency: "direct main"
     description:
       name: geolocator
-      sha256: "5c23f3613f50586c0bbb2b8f970240ae66b3bd992088cf60dd5ee2e6f7dde3a8"
+      sha256: e946395fc608842bb2f6c914807e9183f86f3cb787f6b8f832753e5251036f02
       url: "https://pub.dev"
     source: hosted
-    version: "9.0.2"
+    version: "10.1.0"
   geolocator_android:
     dependency: transitive
     description:
       name: geolocator_android
-      sha256: "835ff5b4888a2f8eba128996494faf9c5d422785322a81dc0565b99e0f6c379d"
+      sha256: "93906636752ea4d4e778afa981fdfe7409f545b3147046300df194330044d349"
       url: "https://pub.dev"
     source: hosted
-    version: "4.2.2"
+    version: "4.3.1"
   geolocator_apple:
     dependency: transitive
     description:
       name: geolocator_apple
-      sha256: "36527c555f4c425f7d8fa8c7c07d67b78e3ff7590d40448051959e1860c1cfb4"
+      sha256: ab90ae811c42ec2f6021e01eca71df00dee6ff1e69d2c2dafd4daeb0b793f73d
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.7"
+    version: "2.3.2"
   geolocator_platform_interface:
     dependency: transitive
     description:
       name: geolocator_platform_interface
-      sha256: af4d69231452f9620718588f41acc4cb58312368716bfff2e92e770b46ce6386
+      sha256: b8cc1d3be0ca039a3f2174b0b026feab8af3610e220b8532e42cff8ec6658535
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.7"
+    version: "4.1.0"
   geolocator_web:
     dependency: transitive
     description:
       name: geolocator_web
-      sha256: f68a122da48fcfff68bbc9846bb0b74ef651afe84a1b1f6ec20939de4d6860e1
+      sha256: "59083f7e0871b78299918d92bf930a14377f711d2d1156c558cd5ebae6c20d58"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.6"
+    version: "2.2.0"
   geolocator_windows:
     dependency: transitive
     description:
       name: geolocator_windows
-      sha256: "242a35938cbe81dd169c9c72fc53e8183c4447bfa998b5df56b6725796591951"
+      sha256: "8725beaa00db2b52f53d9811584cb4488240b250b04a09763e80945017f65c9c"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.2"
+    version: "0.2.1"
   get:
     dependency: "direct main"
     description:
@@ -545,26 +545,26 @@ packages:
     dependency: "direct main"
     description:
       name: google_maps_flutter
-      sha256: c290921cd1750b5ede99c82dcaa84740da86278e6ed0f83ad29752b29a8552c6
+      sha256: d4914cb38b3dcb62c39c085d968d434de0f8050f00f4d9f5ba4a7c7e004934cb
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.0"
+    version: "2.5.0"
   google_maps_flutter_android:
     dependency: transitive
     description:
       name: google_maps_flutter_android
-      sha256: fb3e52f94d0736f6ee8bcdef290f8eab9325376d676f61303347c10ccf15379c
+      sha256: e6cb018169e49332f88d23b1d2119b09e8ab4e7d3a1b889a1b7b3fd113e034ba
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.16"
+    version: "2.5.1"
   google_maps_flutter_ios:
     dependency: transitive
     description:
       name: google_maps_flutter_ios
-      sha256: a9462a433bf3ebe60aadcf4906d2d6341a270d69d3e0fcaa8eb2b64699fcfb4f
+      sha256: "2aa28eb9b9d5dfdce6932a7b7f096430bf83a1a09b4e21e81939351f407c787f"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.3"
+    version: "2.3.2"
   google_maps_flutter_platform_interface:
     dependency: transitive
     description:

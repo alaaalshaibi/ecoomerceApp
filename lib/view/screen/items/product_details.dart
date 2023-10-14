@@ -51,6 +51,7 @@ class ProductDetailsScreen extends GetView<ProductDetailsControllerImp> {
                   ),
                   const SizedBox(height: 10),
                   PriceAndQuantity(
+                    isDis: controller.isDis,
                     price: "${controller.itemsModel.itemsPrice}",
                     priceDiscount:
                         "${controller.itemsModel.itemsPriceDiscount}",

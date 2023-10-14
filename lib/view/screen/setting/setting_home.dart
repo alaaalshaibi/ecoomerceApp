@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/constant/color.dart';
 import 'package:e_commerce_app/core/constant/image_assets.dart';
+import 'package:e_commerce_app/core/constant/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -54,7 +55,9 @@ class SettingScreen extends StatelessWidget {
               indent: 40,
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(AppRoute.viewAddress);
+              },
               trailing: const Icon(Icons.location_on_outlined),
               title: const Text('Address'),
             )

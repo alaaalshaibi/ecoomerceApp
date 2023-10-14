@@ -16,4 +16,9 @@ class AppRoute {
   static const String productDetailsScreen = '/productDetailsScreen';
   static const String settingScreen = '/settingScreen';
   static const String cartScreen = '/cartScreen';
+  //*============address===========
+  static const String addMapAddress = '/addMapAddress';
+  static const String addDetailsAddress = '/addDetailsAddress';
+  static const String viewAddress = '/viewAddress';
+  static const String editAddress = '/editAddress';
 }

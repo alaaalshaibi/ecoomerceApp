@@ -14,6 +14,7 @@ abstract class ProductDetailsController extends GetxController {
   itemsRemove(String itemsId);
   getItemCountCart(String itemsId);
   goToCart();
+  isDiscount();
 }
 
 class ProductDetailsControllerImp extends ProductDetailsController {
@@ -23,6 +24,7 @@ class ProductDetailsControllerImp extends ProductDetailsController {
   late ItemsModel itemsModel;
   StatusRequest statusRequest = StatusRequest.none;
   int itemCountCart = 0;
+  bool isDis = false;
   List subItems = [
     {"name": "Red", "id": 1, "isActive": 0},
     {"name": "Blue", "id": 2, "isActive": 1},
@@ -31,6 +33,7 @@ class ProductDetailsControllerImp extends ProductDetailsController {
   @override
   void onInit() {
     initData();
+    isDiscount();
     super.onInit();
   }
 
@@ -110,5 +113,16 @@ class ProductDetailsControllerImp extends ProductDetailsController {
   @override
   goToCart() {
     Get.toNamed(AppRoute.cartScreen);
+  }
+
+  @override
+  isDiscount() {
+    if (itemsModel.itemsDiscount == "0") {
+      isDis = false;
+      update();
+    } else {
+      isDis = true;
+      update();
+    }
   }
 }
