@@ -43,4 +43,6 @@ class AppLink {
   static const String removeAddress = "$serverLink/address/remove.php";
   static const String editAddress = "$serverLink/address/update.php";
   static const String viewAddress = "$serverLink/address/view.php";
+  //* ================= coupon ===================
+  static const String checkCoupon = "$serverLink/coupon/check_coupon.php";
 }

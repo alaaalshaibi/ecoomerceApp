@@ -1,4 +1,6 @@
 import 'package:e_commerce_app/data/model/cart_model.dart';
+import 'package:e_commerce_app/data/model/coupon_model.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../core/class/status_request.dart';
@@ -13,9 +15,13 @@ abstract class CartController extends GetxController {
   removeCart(String itemsId);
   resetVarCart();
   refreshPage();
+  checkCoupon();
+  checkEnabled();
+  getTotalPrice();
 }
 
 class CartControllerImp extends CartController {
+  TextEditingController couponController = TextEditingController();
   CartData cartData = CartData(crud: Get.find());
   MyServices myServices = Get.find();
   List<CartModel> cartList = [];
@@ -23,6 +29,10 @@ class CartControllerImp extends CartController {
   int itemCount = 0;
   double totalPriceOrder = 0.0;
   int countTotal = 0;
+  bool isEnabledCouponCont = true;
+  CouponModel? couponModel;
+  double discountCoupon = 0;
+  String? couponName;
   StatusRequest statusRequest = StatusRequest.none;
   @override
   resetVarCart() {
@@ -104,7 +114,50 @@ class CartControllerImp extends CartController {
 
   @override
   void onInit() {
+    couponController = TextEditingController();
     cartView();
     super.onInit();
+  }
+
+  @override
+  void dispose() {
+    couponController.dispose();
+    super.dispose();
+  }
+
+  @override
+  checkCoupon() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response =
+        await cartData.checkCouponData(couponName: couponController.text);
+    statusRequest = handlingStatusRequest(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response['status'] == 'success') {
+        checkEnabled();
+        Map<String, dynamic> couponResponse = response['data'];
+        couponModel = CouponModel.fromJson(couponResponse);
+        discountCoupon = double.parse(couponModel!.couponDiscount!);
+        couponName = couponModel!.couponName;
+      } else {
+        // statusRequest = StatusRequest.failure;
+        discountCoupon = 0.0;
+        couponName = null;
+      }
+    } else {
+      // statusRequest = StatusRequest.failure;
+    }
+    update();
+  }
+
+  @override
+  checkEnabled() {
+    isEnabledCouponCont = false;
+    update();
+  }
+
+  @override
+  getTotalPrice() {
+    return (totalPriceOrder - (totalPriceOrder * discountCoupon / 100));
   }
 }
