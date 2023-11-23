@@ -53,12 +53,11 @@ class FavoriteController extends SearchControllerImp {
         Get.rawSnackbar(title: "notification", message: "add to favorite");
       } else {
         statusRequest = StatusRequest.failure;
-        update();
       }
     } else {
       statusRequest = StatusRequest.failure;
-      update();
     }
+    update();
   }
 
   removeFavorite(String itemsId) async {

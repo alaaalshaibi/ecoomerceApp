@@ -1,9 +1,15 @@
+import 'package:e_commerce_app/bindings/home_screen_binding.dart';
 import 'package:e_commerce_app/core/constant/routes_name.dart';
 import 'package:e_commerce_app/view/screen/address/add_map_address.dart';
 import 'package:e_commerce_app/view/screen/address/view_address.dart';
 import 'package:e_commerce_app/view/screen/auth/forget_password/check_email_forget_password.dart';
 import 'package:e_commerce_app/view/screen/auth/forget_password/success_reset_password.dart';
 import 'package:e_commerce_app/view/screen/auth/login.dart';
+import 'package:e_commerce_app/view/screen/checkout/checkout.dart';
+import 'package:e_commerce_app/view/screen/notification/view_notification.dart';
+import 'package:e_commerce_app/view/screen/offers/offers.dart';
+import 'package:e_commerce_app/view/screen/orders/orders_archive.dart';
+import 'package:e_commerce_app/view/screen/orders/orders_pending.dart';
 import 'package:e_commerce_app/view/screen/home/home_screen.dart';
 import 'package:e_commerce_app/view/screen/favorite/my_favorite.dart';
 import 'package:e_commerce_app/view/screen/auth/onboarding/onboarding.dart';
@@ -22,6 +28,7 @@ import 'view/screen/auth/language.dart';
 import 'view/screen/cart/cart.dart';
 import 'view/screen/items/items.dart';
 import 'view/screen/items/product_details.dart';
+import 'view/screen/orders/orders_details.dart';
 import 'view/screen/setting/setting_home.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -45,7 +52,10 @@ List<GetPage<dynamic>>? routes = [
       page: () => const SuccessCheckEmailSignUp()),
   GetPage(
       name: AppRoute.verifyCodeSignUp, page: () => const VerifyCodeSignUp()),
-  GetPage(name: AppRoute.homePage, page: () => const HomeScreen()),
+  GetPage(
+      name: AppRoute.homePage,
+      page: () => const HomeScreen(),
+      binding: HomeScreenBindings()),
   GetPage(
       name: AppRoute.successResetPassword,
       page: () => const SuccessRestPassword()),
@@ -62,4 +72,15 @@ List<GetPage<dynamic>>? routes = [
       name: AppRoute.addDetailsAddress, page: () => const AddDetailsAddress()),
   GetPage(name: AppRoute.viewAddress, page: () => const ViewAddress()),
   GetPage(name: AppRoute.editAddress, page: () => const EditAddress()),
+  //*================ checkOut ======================
+  GetPage(name: AppRoute.checkOut, page: () => const CheckOut()),
+  //*================ Order ======================
+  GetPage(name: AppRoute.ordersPending, page: () => const OrdersPending()),
+  GetPage(name: AppRoute.ordersArchive, page: () => const OrdersArchive()),
+  GetPage(name: AppRoute.orderDetails, page: () => const OrderDetails()),
+  //*================ Notification ======================
+  GetPage(
+      name: AppRoute.viewNotification, page: () => const ViewNotification()),
+  //*================ Offers ======================
+  GetPage(name: AppRoute.offersView, page: () => const OffersView()),
 ];

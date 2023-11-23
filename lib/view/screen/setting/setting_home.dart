@@ -3,6 +3,7 @@ import 'package:e_commerce_app/core/constant/image_assets.dart';
 import 'package:e_commerce_app/core/constant/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../controller/setting/setting_controller.dart';
 
@@ -12,6 +13,7 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SettingControllerImp controller = Get.put(SettingControllerImp());
+    // final controller = Get.lazyPut(() => SettingControllerImp());
     return ListView(
       children: [
         Stack(
@@ -60,7 +62,29 @@ class SettingScreen extends StatelessWidget {
               },
               trailing: const Icon(Icons.location_on_outlined),
               title: const Text('Address'),
-            )
+            ),
+            const Divider(
+              height: 0,
+              indent: 40,
+            ),
+            ListTile(
+              onTap: () {
+                Get.toNamed(AppRoute.ordersPending);
+              },
+              trailing: const Icon(Icons.shop),
+              title: const Text('Orders Pending'),
+            ),
+            const Divider(
+              height: 0,
+              indent: 40,
+            ),
+            ListTile(
+              onTap: () {
+                Get.toNamed(AppRoute.ordersArchive);
+              },
+              trailing: const Icon(Icons.archive),
+              title: const Text('Orders Archive'),
+            ),
           ],
         )),
         const SizedBox(height: 20),
@@ -77,7 +101,9 @@ class SettingScreen extends StatelessWidget {
               indent: 40,
             ),
             ListTile(
-              onTap: () {},
+              onTap: () async {
+                await launchUrl(Uri.parse("tel:00962777192110"));
+              },
               trailing: const Icon(Icons.contact_phone_outlined),
               title: const Text('contact us'),
             )

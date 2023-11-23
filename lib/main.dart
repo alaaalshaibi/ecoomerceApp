@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: controller.appTheme,
       initialBinding: InitBindings(),
-      //initialRoute: '/',
+      // initialRoute: AppRoute.language,
       // home: AppLanguage(),
       getPages: routes,
     );

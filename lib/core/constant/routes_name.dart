@@ -21,4 +21,15 @@ class AppRoute {
   static const String addDetailsAddress = '/addDetailsAddress';
   static const String viewAddress = '/viewAddress';
   static const String editAddress = '/editAddress';
+  //*============ CheckOut ===========
+  static const String checkOut = '/checkOut';
+
+  //*============ Orders ===========
+  static const String ordersPending = '/ordersPending';
+  static const String ordersArchive = '/ordersArchive';
+  static const String orderDetails = '/orderDetails';
+  //*============ Notification ===========
+  static const String viewNotification = '/viewNotification';
+  //*============ Offers ===========
+  static const String offersView = '/offersView';
 }

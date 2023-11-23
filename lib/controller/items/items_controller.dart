@@ -20,7 +20,7 @@ class ItemsControllerImp extends ItemsController {
   List catagoriesItems = [];
   int? isSelected;
   String? idCat;
-  List itemsView = [];
+  List<ItemsModel> itemsView = [];
 
   late String idCategories;
   @override
@@ -63,7 +63,8 @@ class ItemsControllerImp extends ItemsController {
     statusRequest = handlingStatusRequest(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == 'success') {
-        itemsView.addAll(response['data']);
+        List responseData = response['data'];
+        itemsView.addAll(responseData.map((e) => ItemsModel.fromJson(e)));
       } else {
         statusRequest = StatusRequest.failure;
       }

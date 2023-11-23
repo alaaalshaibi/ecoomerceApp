@@ -32,7 +32,7 @@ class AddressControllerImp extends AddressController {
   Completer<GoogleMapController> controllerMap =
       Completer<GoogleMapController>();
   Position? position;
-  CameraPosition? kGooglePlex;
+  CameraPosition? cameraPosition;
   List<Marker> marker = [];
   double? lat;
   double? lang;
@@ -46,7 +46,7 @@ class AddressControllerImp extends AddressController {
   getCurrentPosition() async {
     statusRequest = StatusRequest.loading;
     position = await Geolocator.getCurrentPosition();
-    kGooglePlex = CameraPosition(
+    cameraPosition = CameraPosition(
       target: LatLng(position!.latitude, position!.longitude),
       zoom: 14.4746,
     );
@@ -96,8 +96,9 @@ class AddressControllerImp extends AddressController {
       if (statusRequest == StatusRequest.success) {
         if (response['status'] == 'success') {
           // dataAddress.add(response['data']);
+          Get.snackbar("Alert", "Location has been added");
           Get.offAllNamed(AppRoute.homePage);
-          Get.toNamed(AppRoute.viewAddress);
+          // Get.offNamed(AppRoute.viewAddress);
         } else {
           statusRequest = StatusRequest.failure;
         }

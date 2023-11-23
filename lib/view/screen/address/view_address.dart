@@ -11,39 +11,41 @@ class ViewAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(ViewAddressControllerImp());
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () {
-            Get.toNamed(AppRoute.addMapAddress);
-          }),
-      appBar: AppBar(
-        title: const Text('Address'),
-        centerTitle: true,
+    return SafeArea(
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: () {
+              Get.toNamed(AppRoute.addMapAddress);
+            }),
+        appBar: AppBar(
+          title: const Text('Address'),
+          centerTitle: true,
+        ),
+        body: GetBuilder<ViewAddressControllerImp>(builder: (controller) {
+          return HandlingDataView(
+              statusRequest: controller.statusRequest,
+              widget: ListView(
+                children: [
+                  const SizedBox(height: 15),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: controller.listAddressViewData.length,
+                    itemBuilder: (context, index) {
+                      return CardAddressView(
+                        onPressed: () {
+                          controller.deleteAddress(
+                              controller.listAddressViewData[index].addressId!);
+                        },
+                        addressModel: controller.listAddressViewData[index],
+                      );
+                    },
+                  ),
+                ],
+              ));
+        }),
       ),
-      body: GetBuilder<ViewAddressControllerImp>(builder: (controller) {
-        return HandlingDataView(
-            statusRequest: controller.statusRequest,
-            widget: ListView(
-              children: [
-                const SizedBox(height: 15),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: controller.listAddressViewData.length,
-                  itemBuilder: (context, index) {
-                    return CardAddressView(
-                      onPressed: () {
-                        controller.deleteAddress(
-                            controller.listAddressViewData[index].addressId!);
-                      },
-                      addressModel: controller.listAddressViewData[index],
-                    );
-                  },
-                ),
-              ],
-            ));
-      }),
     );
   }
 }

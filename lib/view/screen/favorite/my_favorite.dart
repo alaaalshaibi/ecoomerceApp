@@ -12,47 +12,49 @@ class MyFavorite extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(FavoriteController());
-    return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(10),
-        child: GetBuilder<FavoriteController>(builder: (controller) {
-          return ListView(
-            children: [
-              CustomAppBarHome(
-                isFavorite: false,
-                isBack: true,
-                onChanged: (value) {
-                  controller.onChangeValue(value);
-                },
-                controllerText: controller.searchText,
-                hintText: 'Find Product',
-                onPressedSearch: () {
-                  controller.getSearchData();
-                },
-              ),
-              const SizedBox(height: 15),
-              controller.isSearch
-                  ? SearchView(dataSearchModel: controller.listSearch)
-                  : GetBuilder<FavoriteController>(builder: (controller) {
-                      return HandlingDataView(
-                          statusRequest: controller.statusRequest,
-                          widget: GridView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                      childAspectRatio: 0.68,
-                                      crossAxisCount: 2),
-                              itemCount: controller.dataViewFavorite.length,
-                              itemBuilder: (context, index) {
-                                return CustomListFavoriteItems(
-                                    myFavoriteModel:
-                                        controller.dataViewFavorite[index]);
-                              }));
-                    })
-            ],
-          );
-        }),
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          padding: const EdgeInsets.all(10),
+          child: GetBuilder<FavoriteController>(builder: (controller) {
+            return ListView(
+              children: [
+                CustomAppBarHome(
+                  isFavorite: false,
+                  isBack: true,
+                  onChanged: (value) {
+                    controller.onChangeValue(value);
+                  },
+                  controllerText: controller.searchText,
+                  hintText: 'Find Product',
+                  onPressedSearch: () {
+                    controller.getSearchData();
+                  },
+                ),
+                const SizedBox(height: 15),
+                controller.isSearch
+                    ? SearchView(dataSearchModel: controller.listSearch)
+                    : GetBuilder<FavoriteController>(builder: (controller) {
+                        return HandlingDataView(
+                            statusRequest: controller.statusRequest,
+                            widget: GridView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        childAspectRatio: 0.68,
+                                        crossAxisCount: 2),
+                                itemCount: controller.dataViewFavorite.length,
+                                itemBuilder: (context, index) {
+                                  return CustomListFavoriteItems(
+                                      myFavoriteModel:
+                                          controller.dataViewFavorite[index]);
+                                }));
+                      })
+              ],
+            );
+          }),
+        ),
       ),
     );
   }

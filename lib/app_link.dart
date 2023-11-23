@@ -45,4 +45,14 @@ class AppLink {
   static const String viewAddress = "$serverLink/address/view.php";
   //* ================= coupon ===================
   static const String checkCoupon = "$serverLink/coupon/check_coupon.php";
+  //* ================= Order ===================
+  static const String orderAdd = "$serverLink/orders/add.php";
+  static const String orderPending = "$serverLink/orders/view_pending.php";
+  static const String ordersArchive = "$serverLink/orders/view_archive.php";
+  static const String ordersDetails = "$serverLink/orders/details.php";
+  static const String ordersDelete = "$serverLink/orders/delete.php";
+  //* =================  Notification ===================
+  static const String viewNotification = "$serverLink/notification/view.php";
+  //* =================  offers ===================
+  static const String offers = "$serverLink/offers.php";
 }

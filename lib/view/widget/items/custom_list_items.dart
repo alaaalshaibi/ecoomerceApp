@@ -19,6 +19,7 @@ class CustomListItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ItemsControllerImp controller = Get.put(ItemsControllerImp());
+    Get.put<FavoriteController>(FavoriteController());
     return Padding(
       padding: const EdgeInsets.all(3.0),
       child: InkWell(

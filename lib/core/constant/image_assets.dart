@@ -13,4 +13,6 @@ class AppImageAssets {
   static const String serverError = 'assets/lottie/server_error.json';
   static const String avatar = 'assets/images/avatar.png';
   static const String sellImage = 'assets/images/sale.png';
+  static const String delivery = 'assets/images/delivery.svg';
+  static const String driveThru = 'assets/images/driveThru.svg';
 }

@@ -11,47 +11,49 @@ class AddMapAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AddressControllerImp controller = Get.put(AddressControllerImp());
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Add Address'),
-        centerTitle: true,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: MaterialButton(
-        minWidth: 250,
-        color: AppColor.primaryColor,
-        textColor: AppColor.backgroundcolor,
-        onPressed: () {
-          controller.goToCompleteAddress();
-        },
-        child: const Text("Complete"),
-      ),
-      body: GetBuilder<AddressControllerImp>(builder: (controllerImp) {
-        return HandlingDataView(
-          statusRequest: controllerImp.statusRequest,
-          widget: Column(
-            children: [
-              if (controllerImp.kGooglePlex != null)
-                Expanded(
-                  child: GoogleMap(
-                    markers: controllerImp.marker.toSet(),
-                    onTap: (latLang) {
-                      controllerImp.addMarker(latLang);
-                    },
-                    mapType: MapType.normal,
-                    initialCameraPosition: controllerImp.kGooglePlex!,
-                    onMapCreated: (GoogleMapController controller) {
-                      if (!controllerImp.controllerMap.isCompleted) {
-                        controllerImp.controllerMap.complete(controller);
-                      } else {}
-                      // controllerImp.controllerMap.complete(controller);
-                    },
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Add Address'),
+          centerTitle: true,
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: MaterialButton(
+          minWidth: 250,
+          color: AppColor.primaryColor,
+          textColor: AppColor.backgroundcolor,
+          onPressed: () {
+            controller.goToCompleteAddress();
+          },
+          child: const Text("Complete"),
+        ),
+        body: GetBuilder<AddressControllerImp>(builder: (controllerImp) {
+          return HandlingDataView(
+            statusRequest: controllerImp.statusRequest,
+            widget: Column(
+              children: [
+                if (controllerImp.cameraPosition != null)
+                  Expanded(
+                    child: GoogleMap(
+                      markers: controllerImp.marker.toSet(),
+                      onTap: (latLang) {
+                        controllerImp.addMarker(latLang);
+                      },
+                      mapType: MapType.normal,
+                      initialCameraPosition: controllerImp.cameraPosition!,
+                      onMapCreated: (GoogleMapController controller) {
+                        if (!controllerImp.controllerMap.isCompleted) {
+                          controllerImp.controllerMap.complete(controller);
+                        } else {}
+                        // controllerImp.controllerMap.complete(controller);
+                      },
+                    ),
                   ),
-                ),
-            ],
-          ),
-        );
-      }),
+              ],
+            ),
+          );
+        }),
+      ),
     );
   }
 }

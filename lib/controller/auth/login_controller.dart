@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:e_commerce_app/core/class/status_request.dart';
 import 'package:e_commerce_app/core/constant/routes_name.dart';
 import 'package:e_commerce_app/core/constant/user_key.dart';
@@ -15,9 +17,11 @@ abstract class LoginController extends GetxController {
   goToForgetPassword();
   showPassword();
   goToVerifyCodeSignUp();
+  alertExit(bool value);
 }
 
 class LoginControllerImp extends LoginController {
+  bool canPop = false;
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
   List<AuthModel> auth = [];
   late TextEditingController emailController;
@@ -48,7 +52,12 @@ class LoginControllerImp extends LoginController {
                 .setString(UserKey.email, response['data']['users_email']);
             myServices.sharedPreferences
                 .setString(UserKey.phone, response['data']['users_phone']);
+            // String userId =
+            //     myServices.sharedPreferences.getString(UserKey.idUser)!;
             myServices.sharedPreferences.setString("Login", "2");
+            FirebaseMessaging.instance.subscribeToTopic("users");
+            FirebaseMessaging.instance.subscribeToTopic(
+                "users${myServices.sharedPreferences.getString(UserKey.idUser)}");
             Get.offNamed(AppRoute.homePage);
             update();
           }
@@ -81,7 +90,6 @@ class LoginControllerImp extends LoginController {
   @override
   void onInit() {
     FirebaseMessaging.instance.getToken().then((value) {
-      print("=============================");
       print("Firebase Token: $value");
       //String? token = value;
     });
@@ -113,5 +121,16 @@ class LoginControllerImp extends LoginController {
     Get.offNamed(AppRoute.verifyCodeSignUp, arguments: {
       "userEmail": emailController.text,
     });
+  }
+
+  @override
+  bool alertExit(bool value) {
+    Get.defaultDialog(
+      title: 'Alert',
+      middleText: 'Do you want to exit the application',
+      onConfirm: () => exit(0),
+      onCancel: () => Get.back(),
+    );
+    return false;
   }
 }

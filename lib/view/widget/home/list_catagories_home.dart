@@ -15,6 +15,7 @@ class ListCatagoriesHome extends GetView<HomeControllerImp> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(HomeControllerImp());
     return SizedBox(
       height: 130,
       child: ListView.separated(

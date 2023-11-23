@@ -75,7 +75,7 @@ class ProductDetailsControllerImp extends ProductDetailsController {
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
-        Get.rawSnackbar(title: "notification", message: "add to cart");
+        Get.snackbar("notification", "add to cart");
       } else {
         statusRequest = StatusRequest.failure;
         update();
@@ -98,7 +98,7 @@ class ProductDetailsControllerImp extends ProductDetailsController {
       statusRequest = handlingStatusRequest(response);
       if (statusRequest == StatusRequest.success) {
         if (response['status'] == 'success') {
-          Get.rawSnackbar(title: "notification", message: "remove to cart");
+          Get.snackbar("notification", "remove to cart");
         } else {
           statusRequest = StatusRequest.failure;
         }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../core/class/status_request.dart';
+import '../../core/constant/routes_name.dart';
 import '../../core/constant/user_key.dart';
 import '../../core/functions/handling_status_controller.dart';
 import '../../core/services/services.dart';
@@ -18,6 +19,7 @@ abstract class CartController extends GetxController {
   checkCoupon();
   checkEnabled();
   getTotalPrice();
+  goToCheckOut();
 }
 
 class CartControllerImp extends CartController {
@@ -31,8 +33,9 @@ class CartControllerImp extends CartController {
   int countTotal = 0;
   bool isEnabledCouponCont = true;
   CouponModel? couponModel;
-  double discountCoupon = 0;
+  double discountCoupon = 0.0;
   String? couponName;
+  String? couponId;
   StatusRequest statusRequest = StatusRequest.none;
   @override
   resetVarCart() {
@@ -45,6 +48,16 @@ class CartControllerImp extends CartController {
   refreshPage() {
     resetVarCart();
     cartView();
+  }
+
+  @override
+  goToCheckOut() {
+    if (cartList.isEmpty) return Get.snackbar('alert', 'My Cart Is Empty');
+    Get.toNamed(AppRoute.checkOut, arguments: {
+      'couponId': couponId ?? '0',
+      'priceOrder': totalPriceOrder.toString(),
+      'discountCoupon': discountCoupon.toString(),
+    });
   }
 
   @override
@@ -81,7 +94,7 @@ class CartControllerImp extends CartController {
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
-        Get.rawSnackbar(title: "notification", message: "add to cart");
+        Get.snackbar("notification", "add to cart");
       } else {
         statusRequest = StatusRequest.failure;
         update();
@@ -102,7 +115,7 @@ class CartControllerImp extends CartController {
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
-        Get.rawSnackbar(title: "notification", message: "remove to cart");
+        Get.snackbar("notification", "remove to cart");
       } else {
         statusRequest = StatusRequest.failure;
       }
@@ -139,8 +152,10 @@ class CartControllerImp extends CartController {
         couponModel = CouponModel.fromJson(couponResponse);
         discountCoupon = double.parse(couponModel!.couponDiscount!);
         couponName = couponModel!.couponName;
+        couponId = couponModel!.couponId;
       } else {
         // statusRequest = StatusRequest.failure;
+        Get.snackbar('Alert', 'The coupon not valid');
         discountCoupon = 0.0;
         couponName = null;
       }

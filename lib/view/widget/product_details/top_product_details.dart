@@ -10,6 +10,7 @@ class TopProductDetails extends GetView<ProductDetailsControllerImp> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(ProductDetailsControllerImp());
     return Stack(
       clipBehavior: Clip.none,
       children: [

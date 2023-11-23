@@ -13,7 +13,7 @@ import 'package:e_commerce_app/view/widget/auth/custom_title_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Login extends StatelessWidget {
+class Login extends GetView<LoginControllerImp> {
   const Login({super.key});
 
   @override
@@ -33,8 +33,9 @@ class Login extends StatelessWidget {
         elevation: 0.0,
         backgroundColor: AppColor.backgroundcolor,
       ),
-      body: WillPopScope(
-        onWillPop: alertExitApp,
+      body: PopScope(
+        canPop: false,
+        onPopInvoked: alertExitApp,
         child: GetBuilder<LoginControllerImp>(builder: (controller) {
           return HandlingDataRequest(
               statusRequest: controller.statusRequest,
