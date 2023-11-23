@@ -66,17 +66,17 @@ class CustomOffersListItems extends GetView<OffersControllerImp> {
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 10),
-                        Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text("Rating 3.5"),
-                            const Spacer(),
-                            ...List.generate(
-                                5,
-                                (index) => const Icon(Icons.star_border,
-                                    size: 15, color: Colors.amberAccent))
-                          ],
-                        ),
+                        // Row(
+                        //   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     const Text("Rating 3.5"),
+                        //     const Spacer(),
+                        //     ...List.generate(
+                        //         5,
+                        //         (index) => const Icon(Icons.star_border,
+                        //             size: 15, color: Colors.amberAccent))
+                        //   ],
+                        // ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [

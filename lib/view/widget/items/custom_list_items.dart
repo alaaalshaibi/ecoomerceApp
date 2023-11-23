@@ -33,12 +33,6 @@ class CustomListItems extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Stack(
                   children: [
-                    // Positioned(
-                    //     child: Image.asset(
-                    //   AppImageAssets.sellImage,
-                    //   height: 50,
-                    //   width: 50,
-                    // )),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -72,17 +66,17 @@ class CustomListItems extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 10),
-                        Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text("Rating 3.5"),
-                            const Spacer(),
-                            ...List.generate(
-                                5,
-                                (index) => const Icon(Icons.star_border,
-                                    size: 15, color: Colors.amberAccent))
-                          ],
-                        ),
+                        // Row(
+                        //   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     const Text("Rating 3.5"),
+                        //     const Spacer(),
+                        //     ...List.generate(
+                        //         5,
+                        //         (index) => const Icon(Icons.star_border,
+                        //             size: 15, color: Colors.amberAccent))
+                        //   ],
+                        // ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
