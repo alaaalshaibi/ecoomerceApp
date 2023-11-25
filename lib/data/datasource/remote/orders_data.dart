@@ -33,4 +33,19 @@ class OrdersData {
     });
     return response.fold((l) => l, (r) => r);
   }
+
+  orderRatingData({
+    required String userId,
+    required String orderId,
+    required String rating,
+    required String noteRating,
+  }) async {
+    var response = await crud.postData(AppLink.rating, {
+      "orders_users_id": userId,
+      "orders_id": orderId,
+      "orders_rating": rating,
+      "orders_note_rating": noteRating,
+    });
+    return response.fold((l) => l, (r) => r);
+  }
 }

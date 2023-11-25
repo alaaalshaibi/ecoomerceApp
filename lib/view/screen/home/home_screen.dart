@@ -14,23 +14,23 @@ class HomeScreen extends StatelessWidget {
     Get.put(HomeScreenControllerImp());
     return SafeArea(
       child: GetBuilder<HomeScreenControllerImp>(builder: (controller) {
-        return Scaffold(
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
-          floatingActionButton: FloatingActionButton(
-              foregroundColor: AppColor.backgroundcolor,
-              backgroundColor: AppColor.primaryColor,
-              onPressed: () {
-                controller.goToCart();
-              },
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25)),
-              child: const Icon(Icons.shopping_cart)),
-          bottomNavigationBar: const ListCustomBottomAppBar(),
-          body: PopScope(
-            onPopInvoked: alertExitApp,
-            canPop: false,
-            child: controller.listPage.elementAt(controller.currantPage),
+        return PopScope(
+          onPopInvoked: alertExitApp,
+          canPop: false,
+          child: Scaffold(
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerDocked,
+            floatingActionButton: FloatingActionButton(
+                foregroundColor: AppColor.backgroundcolor,
+                backgroundColor: AppColor.primaryColor,
+                onPressed: () {
+                  controller.goToCart();
+                },
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25)),
+                child: const Icon(Icons.shopping_cart)),
+            bottomNavigationBar: const ListCustomBottomAppBar(),
+            body: controller.listPage.elementAt(controller.currantPage),
           ),
         );
       }),

@@ -20,7 +20,7 @@ ThemeData themeEnglish = ThemeData(
     bodyLarge: TextStyle(height: 2, color: AppColor.black),
     bodyMedium: TextStyle(height: 1.5, color: AppColor.black),
   ),
-  colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+  colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primaryColor),
   useMaterial3: true,
 );
 

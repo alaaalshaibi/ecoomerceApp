@@ -55,4 +55,6 @@ class AppLink {
   static const String viewNotification = "$serverLink/notification/view.php";
   //* =================  offers ===================
   static const String offers = "$serverLink/offers.php";
+  //* =================  offers ===================
+  static const String rating = "$serverLink/rating.php";
 }

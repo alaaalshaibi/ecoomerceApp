@@ -6,6 +6,7 @@ import 'package:jiffy/jiffy.dart';
 import '../../../core/constant/color.dart';
 import '../../../core/constant/routes_name.dart';
 import '../../../data/model/orders_model.dart';
+import 'alert_rating.dart';
 
 class CustomCardArchiveOrder extends GetView<OrderArchiveControllerImp> {
   final OrdersModel ordersModel;
@@ -94,6 +95,18 @@ class CustomCardArchiveOrder extends GetView<OrderArchiveControllerImp> {
                       fontWeight: FontWeight.bold,
                       color: AppColor.primaryColor),
                 ),
+                if (ordersModel.ordersRating == '0')
+                  MaterialButton(
+                    minWidth: 50,
+                    color: AppColor.primarySoundColor,
+                    onPressed: () {
+                      showDialogRating(context, ordersModel.ordersId!);
+                    },
+                    child: const Text(
+                      'Rating',
+                      style: TextStyle(color: AppColor.primaryColor),
+                    ),
+                  ),
                 MaterialButton(
                   minWidth: 50,
                   color: AppColor.primarySoundColor,

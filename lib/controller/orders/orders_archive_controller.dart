@@ -12,6 +12,10 @@ abstract class OrderArchiveController extends GetxController {
   changeMethodStatus(String value);
   changePaymentMethodType(String value);
   changeOrderType(String value);
+  sendRating(
+      {required String orderId,
+      required String rating,
+      required String noteRating});
 }
 
 class OrderArchiveControllerImp extends OrderArchiveController {
@@ -67,6 +71,7 @@ class OrderArchiveControllerImp extends OrderArchiveController {
 
   @override
   getOrderArchive() async {
+    listOrderArchive.clear();
     statusRequest = StatusRequest.loading;
     update();
     var response = await ordersData.orderArchiveData(
@@ -82,5 +87,27 @@ class OrderArchiveControllerImp extends OrderArchiveController {
       statusRequest = StatusRequest.failure;
     }
     update();
+  }
+
+  @override
+  void sendRating(
+      {required String orderId,
+      required String rating,
+      required String noteRating}) async {
+    if (noteRating.isEmpty) {
+      noteRating = "none";
+    }
+    var response = await ordersData.orderRatingData(
+      userId: myServices.sharedPreferences.getString(UserKey.idUser)!,
+      orderId: orderId,
+      rating: rating.toString(),
+      noteRating: noteRating,
+    );
+    statusRequest = handlingStatusRequest(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response['status'] == 'success') {
+        getOrderArchive();
+      }
+    }
   }
 }
